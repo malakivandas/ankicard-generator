@@ -1,0 +1,38 @@
+.card {
+  font-family: arial;
+  font-size: 20px;
+  text-align: center;
+  color: black;
+  background-color: white;
+}
+
+.table {
+  padding-top: 20px;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+}
+
+.row-border {
+  border-bottom: 1px solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 65%;
+}
+
+.item {
+  padding: 4px 15px;
+  width: 50%;
+}
+
+.conjugation {
+  text-align: left;
+}
+
+.subject-pronoun {
+  font-weight: 700;
+  text-align: right;
+}
