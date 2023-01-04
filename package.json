@@ -2,7 +2,7 @@
   "name": "ankicard-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "api_handler.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/malakivandas/ankicard-generator#readme",
   "dependencies": {
-    "axios": "^1.2.2",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "french-verbs": "^4.2.6",
+    "yargs": "^17.6.2"
   }
 }
