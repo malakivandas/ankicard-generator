@@ -4,16 +4,26 @@ const Lefff = require('french-verbs-lefff/dist/conjugations.json');
 const verbConjugator = (verb, tense) => {
   let conjugationArray = [];
   let pronoun;
+  let conjugation;
   const vowels = ['a', 'e', 'i', 'o', 'u', 'h'];
 
   [0, 1, 2, 3, 4, 5].map((pronoun_id) => {
-    const conjugation = FrenchVerbs.getConjugation(
+    conjugation = FrenchVerbs.getConjugation(
       Lefff,
       verb,
       tense.toUpperCase(),
       pronoun_id,
       {}
     );
+
+    if (
+      conjugation[1] === "'" &&
+      !vowels.includes(conjugation[2])
+    ) {
+      conjugation =
+        conjugation[0] + 'e ' + conjugation.substring(2);
+    }
+
     switch (pronoun_id) {
       case 0:
         vowels.includes(conjugation[0])
@@ -38,6 +48,7 @@ const verbConjugator = (verb, tense) => {
       default:
         console.log('Error in switch statement.');
     }
+
     conjugationArray.push({ pronoun, conjugation });
   });
 
