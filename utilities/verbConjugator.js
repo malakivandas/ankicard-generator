@@ -7,11 +7,15 @@ const verbConjugator = (verb, tense) => {
   let conjugation;
   const vowels = ['a', 'e', 'i', 'o', 'u', 'h'];
 
+  tense = tense.toUpperCase();
+
   [0, 1, 2, 3, 4, 5].map((pronoun_id) => {
+    let agreement = '';
+
     conjugation = FrenchVerbs.getConjugation(
       Lefff,
       verb,
-      tense.toUpperCase(),
+      tense,
       pronoun_id,
       {}
     );
@@ -22,6 +26,24 @@ const verbConjugator = (verb, tense) => {
     ) {
       conjugation =
         conjugation[0] + 'e ' + conjugation.substring(2);
+    }
+
+    if (['PASSE_COMPOSE', 'PLUS_QUE_PARFAIT'].includes(tense)) {
+      if (FrenchVerbs.alwaysAuxEtre(verb)) {
+        conjugation = conjugation + '(e)';
+        if ([3, 5].includes(pronoun_id)) {
+          conjugation = conjugation + 's';
+        }
+        if (pronoun_id === 4) {
+          conjugation = conjugation + '(s)';
+        }
+      }
+      if (['se', "s'"].includes(verb.substring(0, 2))) {
+        conjugation = conjugation + '(e)';
+        if ([3, 4, 5].includes(pronoun_id)) {
+          conjugation = conjugation + '(s)';
+        }
+      }
     }
 
     switch (pronoun_id) {
