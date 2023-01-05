@@ -1,0 +1,55 @@
+<script>
+  const getTextWidth = (text, font) => {
+    const canvas =
+      getTextWidth.canvas ||
+      (getTextWidth.canvas = document.createElement('canvas'));
+    const context = canvas.getContext('2d');
+    context.font = font;
+    const metrics = context.measureText(text);
+    return metrics.width;
+  };
+
+  const getCssStyle = (element, prop) => {
+    return window
+      .getComputedStyle(element, null)
+      .getPropertyValue(prop);
+  };
+
+  const getCanvasFont = (el) => {
+    const fontWeight =
+      getCssStyle(el, 'font-weight') || 'normal';
+    const fontSize = getCssStyle(el, 'font-size') || '16px';
+    const fontFamily =
+      getCssStyle(el, 'font-family') || 'Times New Roman';
+
+    return `${fontWeight} ${fontSize} ${fontFamily}`;
+  };
+
+  const setBreaks = (breakMap) => {
+    breakMap.map((brObj) => {
+      if (brObj.textLength > window.innerWidth - (102 + 22)) {
+        brObj.el.style.display = 'inline';
+      } else {
+        brObj.el.style.display = 'none';
+      }
+    });
+  };
+
+  const breakCollection = document.getElementsByTagName('br');
+  let br;
+  const font = getCanvasFont(breakCollection.item(0).parentNode);
+  const breakMap = [];
+  for (let i = 0; i < breakCollection.length; i++) {
+    br = breakCollection.item(i);
+    breakMap.push({
+      el: br,
+      textLength: getTextWidth(br.parentNode.innerText, font),
+    });
+  }
+
+  setBreaks(breakMap);
+
+  window.addEventListener('resize', (event) => {
+    setBreaks(breakMap);
+  });
+</script>

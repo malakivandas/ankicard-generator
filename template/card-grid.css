@@ -8,9 +8,9 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: 80px minmax(50%, auto);
+  grid-template-columns: max-content minmax(50%, auto);
   max-width: fit-content;
-  min-width: 160px;
+  min-width: 204px;
   margin: 0 auto;
   padding-top: 20px;
 }
@@ -29,10 +29,6 @@
 .conjugation {
   padding: 6px 10px 6px 12px;
   text-align: left;
-}
-
-.break {
-  /* display: none; */
 }
 
 .last-item {
