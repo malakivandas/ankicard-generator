@@ -8,9 +8,12 @@
       content="width=device-width, initial-scale=1.0"
     />
     <title>Document</title>
-    <link rel="stylesheet" href="./card.css" />
+    <!-- <link rel="stylesheet" href="./card-table.css" /> -->
+    <link rel="stylesheet" href="./card-grid.css" />
   </head>
   <body>
+    <p style="margin: 0 auto; text-align: center">aller</p>
+
     <!-- <div class="table">
       <div class="row">
         <div class="item subject-pronoun">je</div>
@@ -43,7 +46,7 @@
       </div>
     </div> -->
 
-    <table>
+    <!-- <table>
       <tr>
         <td class="subject-pronoun">je</td>
         <td class="conjugation">vais</td>
@@ -68,6 +71,28 @@
         <td class="subject-pronoun">ils/elles</td>
         <td class="conjugation">vont</td>
       </tr>
-    </table>
+    </table> -->
+
+    <div class="grid-container">
+      <div class="grid-item subject-pronoun">je</div>
+      <div class="grid-item conjugation">vais</div>
+
+      <div class="grid-item subject-pronoun">tu</div>
+      <div class="grid-item conjugation">vas</div>
+
+      <div class="grid-item subject-pronoun">il/elle/on</div>
+      <div class="grid-item conjugation">va</div>
+
+      <div class="grid-item subject-pronoun">nous</div>
+      <div class="grid-item conjugation">allons</div>
+
+      <div class="grid-item subject-pronoun">vous</div>
+      <div class="grid-item conjugation">allez</div>
+
+      <div class="grid-item subject-pronoun last-item">
+        ils/elles
+      </div>
+      <div class="grid-item conjugation last-item">vont</div>
+    </div>
   </body>
 </html>
