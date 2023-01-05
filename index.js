@@ -2,8 +2,7 @@
 
 const path = require('path');
 
-const verbConjugator =
-  require('./utilities/verbConjugator').verbConjugator;
+const { verbConjugator } = require('./utilities/verbConjugator');
 
 const argv = require('yargs/yargs')(process.argv.slice(2))
   .usage('Usage: [-f | --file <path>] [-t | --tense <string>]')

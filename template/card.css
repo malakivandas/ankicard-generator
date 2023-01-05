@@ -6,33 +6,30 @@
   background-color: white;
 }
 
-.table {
+table {
   padding-top: 20px;
-  width: 100%;
+  margin: 0 auto;
+
+  border-collapse: collapse;
 }
 
-.row {
-  display: flex;
-}
+td {
+  font-size: 16px;
 
-.row-border {
   border-bottom: 1px solid;
   border-top: none;
   border-left: none;
   border-right: none;
-  width: 65%;
-}
-
-.item {
-  padding: 4px 15px;
-  width: 50%;
-}
-
-.conjugation {
-  text-align: left;
 }
 
 .subject-pronoun {
-  font-weight: 700;
+  padding: 6px 12px 6px 10px;
   text-align: right;
+
+  font-weight: 700;
+}
+
+.conjugation {
+  padding: 6px 10px 6px 12px;
+  text-align: left;
 }
