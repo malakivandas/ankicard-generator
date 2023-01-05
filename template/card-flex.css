@@ -1,0 +1,45 @@
+.card {
+  font-family: arial;
+  font-size: 20px;
+  text-align: center;
+  color: black;
+  background-color: white;
+}
+
+.table {
+  padding-top: 20px;
+  margin: 0 auto;
+  min-width: 160px;
+  width: fit-content;
+
+  display: flex;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-bottom: 1px solid;
+}
+
+.subject-pronouns {
+  width: 80px;
+}
+
+.conjugations {
+  min-width: 50%;
+}
+
+.subject-pronouns .item {
+  padding: 6px 12px 6px 10px;
+  text-align: right;
+
+  font-weight: 700;
+}
+
+.conjugations .item {
+  padding: 6px 10px 6px 12px;
+  text-align: left;
+}
