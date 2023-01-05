@@ -27,7 +27,11 @@
 
   const setBreaks = (breakMap) => {
     breakMap.map((brObj) => {
-      if (brObj.textLength > window.innerWidth - (102 + 22)) {
+      if (
+        brObj.textLength >
+        brObj.el.parentNode.parentNode.parentNode.offsetWidth -
+          (102 + 22)
+      ) {
         brObj.el.style.display = 'inline';
       } else {
         brObj.el.style.display = 'none';
