@@ -31,6 +31,19 @@
   text-align: left;
 }
 
+.agreement-e-bracket {
+  letter-spacing: -2.2px;
+  padding-right: 1px;
+}
+
+.agreement-s {
+  padding-left: 1.8px;
+}
+
+.agreement-s-bracket {
+  letter-spacing: -1.5px;
+}
+
 .last-item {
   border: none;
 }
