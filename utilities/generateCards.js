@@ -3,7 +3,7 @@ const path = require('path');
 
 const { conjugateVerb } = require('./conjugateVerb');
 
-const generateCards = (verbs, tenses = ['a_b', 'c_d']) => {
+const generateCards = (verbs, tenses) => {
   const date = new Date();
   const dateString = date.toString();
   const filePath =
