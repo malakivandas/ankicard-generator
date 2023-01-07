@@ -1,12 +1,12 @@
 const FrenchVerbs = require('french-verbs');
 const Lefff = require('french-verbs-lefff/dist/conjugations.json');
+const { contracts } = require('french-contractions');
 
 const conjugateVerb = (verb, tense) => {
   let conjugationArray = [];
   let pronoun;
   let conjugation;
   let agreement = [];
-  const vowels = ['a', 'e', 'i', 'o', 'u', 'h'];
 
   tense = tense.toUpperCase();
 
@@ -21,10 +21,17 @@ const conjugateVerb = (verb, tense) => {
       {}
     );
 
-    // french-verbs package bug patch
+    // french-verbs package reflexive bug patch
     if (
       conjugation[1] === "'" &&
-      !vowels.includes(conjugation[2])
+      !contracts(
+        conjugation.substring(
+          conjugation.indexOf("'") + 1,
+          conjugation.includes(' ')
+            ? conjugation.indexOf(' ')
+            : 100
+        )
+      )
     ) {
       conjugation =
         conjugation[0] + 'e ' + conjugation.substring(2);
@@ -51,7 +58,14 @@ const conjugateVerb = (verb, tense) => {
 
     switch (pronoun_id) {
       case 0:
-        vowels.includes(conjugation[0])
+        contracts(
+          conjugation.substring(
+            0,
+            conjugation.includes(' ')
+              ? conjugation.indexOf(' ')
+              : 100
+          )
+        )
           ? (pronoun = "j'")
           : (pronoun = 'je');
         break;
