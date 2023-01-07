@@ -1,8 +1,40 @@
 const fs = require('fs');
 const path = require('path');
-const Lefff = require('french-verbs-lefff/dist/conjugations.json');
 
 const { conjugateVerb } = require('./conjugateVerb');
+
+const tenseString = (tense) => {
+  if (tense === 'present') {
+    return 'présent';
+  }
+  if (tense === 'futur') {
+    return 'futur simple';
+  }
+  if (tense === 'imparfait') {
+    return 'imparfait';
+  }
+  if (tense === 'passe_simple') {
+    return 'passé simple';
+  }
+  if (tense === 'conditionnel_present') {
+    return 'conditionnel';
+  }
+  if (tense === 'imperatif_present') {
+    return 'impératif';
+  }
+  if (tense === 'subjonctif_present') {
+    return 'subjonctif';
+  }
+  if (tense === 'subjonctif_imparfait') {
+    return 'imparfait du subjonctif';
+  }
+  if (tense === 'passe_compose') {
+    return 'passé composé';
+  }
+  if (tense === 'plus_que_parfait') {
+    return 'plus-que-parfait';
+  }
+};
 
 const generateCards = (verbs, tenses) => {
   const date = new Date();
@@ -17,6 +49,7 @@ const generateCards = (verbs, tenses) => {
     '.txt';
 
   let conjugationHtml;
+  const tensesRequired = tenses.length > 1;
 
   tenses.map((tense) => {
     verbs.map((verb) => {
@@ -25,9 +58,9 @@ const generateCards = (verbs, tenses) => {
         conjugateVerb(verb, tense).map(
           ({ pronoun, conjugation, agreement }) => {
             conjugationHtml +=
-              '<div class=""grid-item subject-pronoun"">' +
+              '<div class=""subject-pronoun"">' +
               pronoun +
-              '</div><div class=""grid-item conjugation"">' +
+              '</div><div class=""conjugation"">' +
               (conjugation.includes(' ')
                 ? ((i = conjugation.lastIndexOf(' ')) =>
                     conjugation.substring(0, i) +
@@ -50,7 +83,13 @@ const generateCards = (verbs, tenses) => {
         );
         fs.appendFileSync(
           filePath,
-          verb +
+          (tensesRequired ? '"' : '') +
+            verb +
+            (tensesRequired
+              ? '<p class=""tense"">' +
+                tenseString(tense) +
+                '</p>"'
+              : '') +
             ' "<div class=""grid-container"">' +
             conjugationHtml +
             '</div>"\n'
