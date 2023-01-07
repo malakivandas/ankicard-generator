@@ -6,6 +6,11 @@
   background-color: white;
 }
 
+.tense {
+  margin: 5px 0 15px 0;
+  font-size: 14px;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: max-content minmax(50%, auto);
