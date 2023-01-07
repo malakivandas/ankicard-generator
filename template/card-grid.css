@@ -20,8 +20,12 @@
   padding-top: 20px;
 }
 
-.grid-item {
+.grid-container div {
   border-bottom: 1px solid;
+}
+
+.grid-container div:nth-last-child(-n + 2) {
+  border: none;
 }
 
 .subject-pronoun {
@@ -47,8 +51,4 @@
 
 .agreement-s-bracket {
   letter-spacing: -1.5px;
-}
-
-.last-item {
-  border: none;
 }
