@@ -83,14 +83,14 @@ const generateCards = (verbs, tenses) => {
         );
         fs.appendFileSync(
           filePath,
-          (tensesRequired ? '"' : '') +
+          '"' +
             verb +
             (tensesRequired
               ? '<p class=""tense"">' +
                 tenseString(tense) +
-                '</p>"'
+                '</p>'
               : '') +
-            ' "<div class=""grid-container"">' +
+            '" "<div class=""grid-container"">' +
             conjugationHtml +
             '</div>"\n'
         );
