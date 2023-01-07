@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const Lefff = require('french-verbs-lefff/dist/conjugations.json');
 
 const { conjugateVerb } = require('./conjugateVerb');
 
@@ -15,17 +16,16 @@ const generateCards = (verbs, tenses) => {
     tenses.map((tense) => tense.replaceAll('_', '-')).join('_') +
     '.txt';
 
-  const write = (content) => {
-    fs.appendFileSync(filePath, content);
-  };
+  let conjugationHtml;
 
   tenses.map((tense) => {
     verbs.map((verb) => {
-      write(verb + ' "<div class=""grid-container"">');
-      conjugateVerb(verb, tense).map(
-        ({ pronoun, conjugation, agreement }) => {
-          write(
-            '<div class=""grid-item subject-pronoun"">' +
+      try {
+        conjugationHtml = '';
+        conjugateVerb(verb, tense).map(
+          ({ pronoun, conjugation, agreement }) => {
+            conjugationHtml +=
+              '<div class=""grid-item subject-pronoun"">' +
               pronoun +
               '</div><div class=""grid-item conjugation"">' +
               (conjugation.includes(' ')
@@ -45,11 +45,20 @@ const generateCards = (verbs, tenses) => {
                   '"">' +
                   agreement[1]
                 : '') +
-              '</div>'
-          );
-        }
-      );
-      write('</div>"\n');
+              '</div>';
+          }
+        );
+        fs.appendFileSync(
+          filePath,
+          verb +
+            ' "<div class=""grid-container"">' +
+            conjugationHtml +
+            '</div>"\n'
+        );
+      } catch (err) {
+        // Only the 'NotFoundInDict' error
+        console.log(err.message);
+      }
     });
   });
 };
