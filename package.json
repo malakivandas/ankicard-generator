@@ -18,6 +18,7 @@
   "homepage": "https://github.com/malakivandas/ankicard-generator#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "french-contractions": "^4.2.6",
     "french-verbs": "^4.2.6",
     "french-verbs-lefff": "^2.2.6",
     "yargs": "^17.6.2"

@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-const { verbConjugator } = require('./utilities/verbConjugator');
+const { generateCards } = require('./utilities/generateCards');
 
 const argv = require('yargs/yargs')(process.argv.slice(2))
   .usage('Usage: [-f | --file <path>] [-t | --tense <string>]')
@@ -36,10 +36,6 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
   .example('$0 -f ./verbs-list.json -t tense')
   .example('$0 -f ./verbs-list.json -t tense1 tense2').argv;
 
-const verbs = require(path.join(__dirname, argv.file)).verbs;
+const verbs = require(path.join(process.cwd(), argv.file)).verbs;
 
-argv.tense.map((tense) => {
-  verbs.map((verb) => {
-    console.log(verbConjugator(verb, tense));
-  });
-});
+generateCards(verbs, argv.tense);
