@@ -1,4 +1,8 @@
-const FrenchVerbs = require('french-verbs');
+const {
+  getConjugation,
+  alwaysAuxEtre,
+  isTransitive,
+} = require('french-verbs');
 const Lefff = require('french-verbs-lefff/dist/conjugations.json');
 const { contracts } = require('french-contractions');
 
@@ -14,15 +18,46 @@ const conjugateVerb = (verb, tense) => {
     try {
       agreement = [];
 
-      conjugation = FrenchVerbs.getConjugation(
+      // french-verbs package bug patch - person omittance in tenses other than PRESENT
+      try {
+        getConjugation(Lefff, verb, 'PRESENT', pronoun_id, {
+          aux:
+            !alwaysAuxEtre(verb) && !isTransitive(verb)
+              ? 'AVOIR'
+              : null,
+        });
+      } catch (err) {
+        if (
+          err.message.substring(0, 6) === 'person' &&
+          err.message.substring(0, 8) !== 'person m'
+        ) {
+          err.message =
+            err.message.substring(
+              0,
+              err.message.lastIndexOf(' ')
+            ) +
+            ' PRESENT and therefore in ' +
+            tense;
+          throw err;
+        } else {
+          throw err;
+        }
+      }
+
+      conjugation = getConjugation(
         Lefff,
         verb,
         tense,
         pronoun_id,
-        {}
+        {
+          aux:
+            !alwaysAuxEtre(verb) && !isTransitive(verb)
+              ? 'AVOIR'
+              : null,
+        }
       );
 
-      // french-verbs package reflexive bug patch
+      // french-verbs package bug patch - reflexive pronoun in tenses other than PRESENT
       if (
         conjugation[1] === "'" &&
         !contracts(
@@ -42,7 +77,7 @@ const conjugateVerb = (verb, tense) => {
       if (
         ['PASSE_COMPOSE', 'PLUS_QUE_PARFAIT'].includes(tense)
       ) {
-        if (FrenchVerbs.alwaysAuxEtre(verb)) {
+        if (alwaysAuxEtre(verb)) {
           agreement.push('(e)');
           if ([3, 5].includes(pronoun_id)) {
             agreement.push('s');
@@ -94,7 +129,7 @@ const conjugateVerb = (verb, tense) => {
       conjugationArray.push({ pronoun, conjugation, agreement });
     } catch (err) {
       if (err.name !== 'NotFoundInDict') {
-        console.log(err.message);
+        console.log(err.name + ': ' + err.message);
       } else {
         throw err;
       }

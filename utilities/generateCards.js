@@ -96,7 +96,7 @@ const generateCards = (verbs, tenses) => {
         );
       } catch (err) {
         // Only the 'NotFoundInDict' error
-        console.log(err.message);
+        console.log(err.name + ': ' + err.message);
       }
     });
   });
