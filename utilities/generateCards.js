@@ -64,7 +64,7 @@ const generateCards = (verbs, tenses) => {
               (conjugation.includes(' ')
                 ? ((i = conjugation.lastIndexOf(' ')) =>
                     conjugation.substring(0, i) +
-                    '<br />' +
+                    ' <br />' +
                     conjugation.substring(i + 1))()
                 : conjugation) +
               (agreement[0]
