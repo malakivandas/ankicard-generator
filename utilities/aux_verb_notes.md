@@ -1,0 +1,51 @@
+The list of verbs that cause the `alwaysAuxEtre()` function to return `true` are:
+
+- aller
+- apparaître
+  - sometimes uses avoir without a change in meaning, but usually uses être [[ref](https://french.kwiziq.com/revision/grammar/conjugate-apparaitre-in-le-passe-compose-conversational-past)]
+- arriver
+- débeller
+  - possible typo? doesn't translate or have any results in online conjugators
+- décéder
+- devenir
+- échoir
+  - use être when insisting on the result and avoir when insisting on the action [[ref](https://www.wordreference.com/conj/frverbs.aspx?v=%C3%A9choir)]
+- entrer
+  - changes meaning depending if the auxiliary is avoir or être [[ref](https://french.kwiziq.com/revision/grammar/entrer-can-be-used-with-avoir-or-etre-in-le-passe-compose-and-changes-meaning)]
+- intervenir
+- mourir
+- naitre
+- naître
+- partir
+- parvenir
+- provenir
+- redevenir
+- repartir
+- rester
+- resurvenir
+- retomber
+- revenir
+- survenir
+- tomber
+- venir
+
+Other verbs that should show its conjugation with être as an auxiliary, but can also be conjugated with avoir (sometimes to change its meaning):
+
+- demeurer
+  - [[ref](https://french.kwiziq.com/revision/grammar/demeurer-can-be-used-with-avoir-or-etre-in-le-passe-compose-and-changes-meaning)]
+- descendre
+  - Verbs book
+- monter
+  - Verbs book
+- passer
+  - Verbs book
+- rentrer
+  - Verbs book
+- repasser
+  - [[ref](https://french.kwiziq.com/revision/grammar/repasser-can-be-used-with-avoir-or-etre-in-le-passe-compose-and-changes-meaning)]
+- retourner
+  - Verbs book
+- sortir
+  - Verbs book
+- tourner
+  - [[ref](https://www.commeunefrancaise.com/blog/french-conjugation-avoir-and-etre)]
